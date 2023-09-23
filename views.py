@@ -236,7 +236,7 @@ def editProfile():
 
         if type == 'student':
             update_sql = 'UPDATE student SET studentName = %s, studentEmail = %s, studentProfilePic = %s, studentPhoneNo = %s, studentLocation = %s, studentProgramme = %s, studentCGPA = %s, studentJobExperience = %s, studentSkill = %s, studentResumeLink = %s WHERE studentID = %s'
-            cursor.execute(update_sql, (name,email,img,phone,location,programme,cgpa,jobExperience,skill,resume,Id))
+            cursor.execute(update_sql, (name,email,img_url,phone,location,programme,cgpa,jobExperience,skill,resume_url,Id))
             db_conn.commit()
         else:
             update_sql = 'UPDATE company SET companyName = %s, companyEmail = %s, companyProfilePic = %s, companyLocation = %s, companyIndustry = %s, companySize = %s, companyDescription = %s WHERE companyID = %s'
