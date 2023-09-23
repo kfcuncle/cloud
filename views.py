@@ -157,7 +157,7 @@ def jobDetail(jobID = None):
 
     cursor.execute("SELECT * FROM application WHERE jobID = %s and studentID = %s",(jobID,Id))
     application = cursor.fetchone()
-    cursor.execute('SELECT jobID, jobPosition, companyLocation, jobIndustry, jobSalary, jobDescription, jobResponsibility, jobRequirement, jobPostedDate, jobWorkingHour, companyDescription, jobStatus FROM job INNER JOIN company ON job.companyID = company.companyID WHERE jobID =' + jobID)
+    cursor.execute('SELECT jobID, companyProfilePic, jobPosition, companyLocation, jobIndustry, jobSalary, jobDescription, jobResponsibility, jobRequirement, jobPostedDate, jobWorkingHour, companyDescription, jobStatus FROM job INNER JOIN company ON job.companyID = company.companyID WHERE jobID =' + jobID)
     data = cursor.fetchone()
     return render_template("jobDetail.html",type=type, data=data, application=application)
 
