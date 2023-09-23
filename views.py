@@ -170,9 +170,9 @@ def profile():
     cursor = db_conn.cursor()
 
     if type == 'student':
-        cursor.execute('SELECT * FROM student WHERE studentId = %s', (Id))
+        cursor.execute('SELECT * FROM student WHERE studentID = %s', (Id))
     else:
-        cursor.execute('SELECT * FROM company WHERE companyId = %s', (Id))
+        cursor.execute('SELECT * FROM company WHERE companyID = %s', (Id))
     data = cursor.fetchone()
     return render_template("profile.html",type=type,data = data)
 
@@ -185,9 +185,9 @@ def editProfile():
     resume_url = ''
 
     if type == 'student':
-        cursor.execute('SELECT * FROM student WHERE studentId = %s', (Id))
+        cursor.execute('SELECT * FROM student WHERE studentID = %s', (Id))
     else:
-        cursor.execute('SELECT * FROM company WHERE companyId = %s', (Id))
+        cursor.execute('SELECT * FROM company WHERE companyID = %s', (Id))
     data = cursor.fetchone()
 
     if request.method == 'POST':
@@ -373,13 +373,13 @@ def internship(studentId=None):
             cursor.execute(update_sql,(request.form.get('mark4'),Id,'report4'))
             db_conn.commit()
 
-    cursor.execute('SELECT * FROM report WHERE studentId = %s AND reportName = %s', (Id,'report1'))
+    cursor.execute('SELECT * FROM report WHERE studentID = %s AND reportName = %s', (Id,'report1'))
     report1 = cursor.fetchone()
-    cursor.execute('SELECT * FROM report WHERE studentId = %s AND reportName = %s', (Id,'report2'))
+    cursor.execute('SELECT * FROM report WHERE studentID = %s AND reportName = %s', (Id,'report2'))
     report2 = cursor.fetchone()
-    cursor.execute('SELECT * FROM report WHERE studentId = %s AND reportName = %s', (Id,'report3'))
+    cursor.execute('SELECT * FROM report WHERE studentID = %s AND reportName = %s', (Id,'report3'))
     report3 = cursor.fetchone()
-    cursor.execute('SELECT * FROM report WHERE studentId = %s AND reportName = %s', (Id,'report4'))
+    cursor.execute('SELECT * FROM report WHERE studentID = %s AND reportName = %s', (Id,'report4'))
     report4 = cursor.fetchone()
 
     if report1 and report2 and report3 and report4:
@@ -396,9 +396,9 @@ def internship(studentId=None):
             update_sql = 'UPDATE internship SET internshipResult = %s WHERE studentID = %s'
             cursor.execute(update_sql,(grade,Id))
 
-    cursor.execute('SELECT studentID,studentName,studentFaculty,studentProgramme,studentCohort FROM student WHERE studentId = %s', (Id))
+    cursor.execute('SELECT studentID,studentName,studentFaculty,studentProgramme,studentCohort FROM student WHERE studentID = %s', (Id))
     data = cursor.fetchone()
-    cursor.execute('SELECT supervisor.supervisorID, supervisorName, internshipStartDate, internshipEndDate, internshipStatus, internshipResult FROM internship INNER JOIN supervisor ON supervisor.supervisorID = internship.supervisorID WHERE studentId = %s', (Id))
+    cursor.execute('SELECT supervisor.supervisorID, supervisorName, internshipStartDate, internshipEndDate, internshipStatus, internshipResult FROM internship INNER JOIN supervisor ON supervisor.supervisorID = internship.supervisorID WHERE studentID = %s', (Id))
     internship = cursor.fetchone()
     
     return render_template("internship.html",type=type,data = data, internship=internship, report1=report1, report2=report2, report3=report3, report4=report4)
@@ -466,7 +466,7 @@ def studentProfile(Id=None):
     Id = Id
     type = 'student'
     cursor = db_conn.cursor()
-    cursor.execute('SELECT * FROM student WHERE studentId = %s', (Id))
+    cursor.execute('SELECT * FROM student WHERE studentID = %s', (Id))
     data = cursor.fetchone()
     return render_template("profile.html",type=type,data = data)
 
