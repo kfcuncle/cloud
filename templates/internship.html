@@ -95,16 +95,16 @@
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Supervisor</p>
                                             <select name="comp_select_supervisor" class="form-select border-0">
-                                                {% if internship[1] == 'Goh Ching Pang' %}
-                                                <option disabled selected value>{{internship[1]}}</option>
+                                                {% if supervisor[0] == 'Goh Ching Pang' %}
+                                                <option disabled selected value>{{supervisor[0]}}</option>
                                                 <option value="Low Choon Keat">Low Choon Keat</option>
                                                 <option value="Tew Yi Qi">Tew Yi Qi</option>
-                                                {% elif internship[1] == 'Low Choon Keat' %}
-                                                <option disabled selected value>{{internship[1]}}</option>
+                                                {% elif supervisor[0] == 'Low Choon Keat' %}
+                                                <option disabled selected value>{{supervisor[0]}}</option>
                                                 <option value="Goh Ching Pang">Goh Ching Pang</option>
                                                 <option value="Tew Yi Qi">Tew Yi Qi</option>
-                                                {% elif internship[1] == 'Tew Yi Qi' %}
-                                                <option disabled selected value>{{internship[1]}}</option>
+                                                {% elif supervisor[0] == 'Tew Yi Qi' %}
+                                                <option disabled selected value>{{supervisor[0]}}</option>
                                                 <option value="Goh Ching Pang">Goh Ching Pang</option>
                                                 <option value="Low Choon Keat">Low Choon Keat</option>
                                                 {% else %}
@@ -119,19 +119,19 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Internship Start Date</p>
-                                            <p>{{internship[2]}}</p>
+                                            <p>{{internship[0]}}</p>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Internship End Date</p>
-                                            <p>{{internship[3]}}</p>
+                                            <p>{{internship[1]}}</p>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Internship Status</p>
-                                            <p>{{internship[4]}}</p>
+                                            <p>{{internship[2]}}</p>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Internship Result</p>
-                                            <p>{{internship[5]}}</p>
+                                            <p>{{internship[3]}}</p>
                                         </div>
                                     </div>
                                     <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Internship Report</h6>
