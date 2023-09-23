@@ -181,6 +181,8 @@ def editProfile():
     type=session['userType']
     Id = session['Id']
     cursor = db_conn.cursor()
+    image_url = ''
+    resume_url = ''
 
     if type == 'student':
         cursor.execute('SELECT * FROM student WHERE studentId = %s', (Id))
