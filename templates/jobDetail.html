@@ -9,26 +9,26 @@ JobDetail
         <div class="row gy-5 gx-4">
             <div class="col-lg-8">
                 <div class="d-flex align-items-center mb-5">
-                    <img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt=""
+                    <img class="flex-shrink-0 img-fluid border rounded" src="{{data[1]}}" alt=""
                         style="width: 80px; height: 80px;">
                     <div class="text-start ps-4">
-                        <h3 class="mb-3">{{data[1]}}</h3>
+                        <h3 class="mb-3">{{data[2]}}</h3>
                         <span class="text-truncate me-3"><i
-                                class="fa fa-map-marker-alt text-primary me-2"></i>{{data[2]}}</span>
+                                class="fa fa-map-marker-alt text-primary me-2"></i>{{data[3]}}</span>
                         <span class="text-truncate me-3"><i
-                                class="far fa-clock text-primary me-2"></i>{{data[9]}}</span>
+                                class="far fa-clock text-primary me-2"></i>{{data[10]}}</span>
                         <span class="text-truncate me-0"><i
-                                class="far fa-money-bill-alt text-primary me-2"></i>{{data[4]}}</span>
+                                class="far fa-money-bill-alt text-primary me-2"></i>{{data[5]}}</span>
                     </div>
                 </div>
 
                 <div class="mb-5">
                     <h4 class="mb-3">Job description</h4>
-                    <p>{{data[5]}}</p>
-                    <h4 class="mb-3">Responsibility</h4>
                     <p>{{data[6]}}</p>
-                    <h4 class="mb-3">Qualifications</h4>
+                    <h4 class="mb-3">Responsibility</h4>
                     <p>{{data[7]}}</p>
+                    <h4 class="mb-3">Qualifications</h4>
+                    <p>{{data[8]}}</p>
                 </div>
 
                 <div class="">
@@ -46,12 +46,12 @@ JobDetail
                             </div>
                             {% endif %}
                             {% elif type == 'admin' %}
-                            {% if data[11] == 'Approved' %}
+                            {% if data[12] == 'Approved' %}
                             <div class="col-12">
                                 <button class="btn btn-primary w-100" name="approve" value="approve"
                                 disabled>Approved</button>
                             </div>
-                            {% elif data[11] == 'Rejected' %}
+                            {% elif data[12] == 'Rejected' %}
                             <div class="col-12">
                                 <button class="btn btn-danger w-100" name="reject" value="reject"
                                 disabled>Rejected</button>
@@ -76,15 +76,15 @@ JobDetail
             <div class="col-lg-4">
                 <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
                     <h4 class="mb-4">Job Summery</h4>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{data[8]}}</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{data[1]}}</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Working Hours : {{data[9]}}</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: RM{{data[4]}}</p>
-                    <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{data[2]}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{data[9]}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{data[2]}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Working Hours : {{data[10]}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: RM{{data[5]}}</p>
+                    <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{data[3]}}</p>
                 </div>
                 <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
                     <h4 class="mb-4">Company Detail</h4>
-                    <p class="m-0">{{data[10]}}</p>
+                    <p class="m-0">{{data[11]}}</p>
                 </div>
             </div>
         </div>
