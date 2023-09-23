@@ -272,8 +272,8 @@ def internship(studentId=None):
         read_sql = "SELECT supervisorID FROM supervisor WHERE supervisorName = '" + supervisor + "'"
         cursor.execute(read_sql)
         supervisor = cursor.fetchone()
-        update_sql = 'UPDATE internship SET supervisorID = %s'
-        cursor.execute(update_sql,supervisor[0])
+        update_sql = 'UPDATE internship SET supervisorID = %s WHERE studentID = %s'
+        cursor.execute(update_sql,(supervisor[0],Id))
         db_conn.commit()
     
     if request.method == 'POST': 
