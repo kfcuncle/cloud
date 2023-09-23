@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+        
+    </head>
+    <body>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+              <!-- Tabs Titles -->
+              {% if type == "company": %}
+              <a href="{{ url_for('login',type = 'student') }}" class="active"><h2 class="inactive underlineHover"> Student </h2></a>
+              <a href="{{ url_for('login',type = 'company') }}" class="active"><h2 class="active"> Company </h2></a>
+              <a href="{{ url_for('login',type = 'supervisor') }}" class="active"><h2 class="inactive underlineHover"> Supervisor </h2></a>
+              <a href="{{ url_for('login',type = 'admin') }}" class="active"><h2 class="inactive underlineHover"> Admin </h2></a>
+              {% elif type == "supervisor": %}
+              <a href="{{ url_for('login',type = 'student') }}" class="active"><h2 class="inactive underlineHover"> Student </h2></a>
+              <a href="{{ url_for('login',type = 'company') }}" class="active"><h2 class="inactive underlineHover"> Company </h2></a>
+              <a href="{{ url_for('login',type = 'supervisor') }}" class="active"><h2 class="active"> Supervisor </h2></a>
+              <a href="{{ url_for('login',type = 'admin') }}" class="active"><h2 class="inactive underlineHover"> Admin </h2></a>
+              {% elif type == "admin": %}
+              <a href="{{ url_for('login',type = 'student') }}" class="active"><h2 class="inactive underlineHover"> Student </h2></a>
+              <a href="{{ url_for('login',type = 'company') }}" class="active"><h2 class="inactive underlineHover"> Company </h2></a>
+              <a href="{{ url_for('login',type = 'supervisor') }}" class="active"><h2 class="inactive underlineHover"> Supervisor </h2></a>
+              <a href="{{ url_for('login',type = 'admin') }}" class="active"><h2 class="active"> Admin </h2></a>
+              {% else %}
+              <a href="{{ url_for('login',type = 'student') }}" class="active"><h2 class="active"> Student </h2></a>
+              <a href="{{ url_for('login',type = 'company') }}" class="active"><h2 class="inactive underlineHover"> Company </h2></a>
+              <a href="{{ url_for('login',type = 'supervisor') }}" class="active"><h2 class="inactive underlineHover"> Supervisor </h2></a>
+              <a href="{{ url_for('login',type = 'admin') }}" class="active"><h2 class="inactive underlineHover"> Admin </h2></a>
+              {% endif %}
+              <!-- Login Form -->
+              <form action="{{ url_for('login',type = type) }}" method="post">
+                <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email" required>
+                <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+                <div class="msg">{{ msg }}</div>
+                <input type="submit" class="fadeIn fourth" value="Log In">
+              </form>
+          
+              <!-- Remind Passowrd -->
+              <div id="formFooter">
+                <a class="underlineHover" href="{{ url_for('signup',type = type) }}">Sign Up</a>
+              </div>
+          
+            </div>
+          </div>
+    </body>
+</html>

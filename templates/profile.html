@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="bg-c-lite-green user-profile">
+                            {% set studentId = data[0]|string %}
+                            {% if request.path == "/studentProfile/" + studentId %}
+                            {% else %}
+                            <div class="image-upload"
+                                style="width: 25px; height: 25px; position:absolute; right: 2%; top: 2%;">
+                                <a href="{{ url_for('editProfile')}}" style="background-color: transparent; border: none;">
+                                    <img src="{{ url_for('static', filename='img/edit.png') }}"
+                                        style="height: 25px; width: 25px;" />
+                                </a>
+                            </div>
+                            {% endif %}
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    {% if data[4] %}
+                                    <img src="{{data[4]}}" style="height: 100px; width: 100px;" class="img-radius"
+                                        alt="User-Profile-Image">
+                                    {% else %}
+                                    <img src="{{ url_for('static', filename='img/profile.png') }}"
+                                        style="height: 100px; width: 100px;" class="img-radius"
+                                        alt="User-Profile-Image">
+                                    {% endif %}
+                                </div>
+                                <h6 class="f-w-600">{{data[1]}}</h6>
+                                <p></p>
+                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+                        {% if type == 'student': %}
+                        <div>
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400">{{data[2]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Phone</p>
+                                        <h6 class="text-muted f-w-400">{{data[5]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Location</p>
+                                        <h6 class="text-muted f-w-400">{{data[6]}}</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Education</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Programme</p>
+                                        <h6 class="text-muted f-w-400">{{data[9]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">CGPA</p>
+                                        <h6 class="text-muted f-w-400">{{data[7]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Working Experience</p>
+                                        <h6 class="text-muted f-w-400">{{data[11]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Skills</p>
+                                        <h6 class="text-muted f-w-400">{{data[12]}}</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="{{data[13]}}" class="ml-4 mt-1 btn btn-dark btn-sm">RESUME</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div>
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400">{{data[2]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Location</p>
+                                        <h6 class="text-muted f-w-400">{{data[6]}}</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Industry</p>
+                                        <h6 class="text-muted f-w-400">{{data[5]}}</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Size</p>
+                                        <h6 class="text-muted f-w-400">{{data[7]}}</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="m-b-10 f-w-600">Description</p>
+                                        <h6 class="text-muted f-w-400">{{data[8]}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

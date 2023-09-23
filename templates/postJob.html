@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}
+Post Job
+{% endblock %}
+{% block content %}
+<!-- Job Detail Start -->
+<form method="POST" action="{{ url_for('postJob')}}">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-7">
+                    <div class="mb-5">
+                        <h4 class="mb-3">Job Position</h4>
+                        <textarea name="jobPosition" id="" cols="80" rows="1"></textarea>
+                        <h4 class="mb-3">Description</h4>
+                        <textarea name="jobDescription" id="" cols="80" rows="3"></textarea>
+                        <h4 class="mb-3">Responsibility</h4>
+                        <textarea name="jobResponsibility" id="" cols="80" rows="3"></textarea>
+                        <h4 class="mb-3">Requirement</h4>
+                        <textarea name="jobRequirement" id="" cols="80" rows="3"></textarea>
+                    </div>
+
+
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="bg-light rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                        <h4 class="mb-4">Job Summery</h4>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Salary :<input type="number"
+                                name="jobSalary"></p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Working Hours : <input type="text"
+                                name="jobWorkingHour"></p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Industry :
+                            <select name="comp_select_industry" class="form-select border-0">
+                                <option disabled selected value> -- Industry -- </option>
+                                <option value="Internet Technology">Internet Technology</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Architecture">Architecture</option>
+                                <option value="HR">HR</option>
+                            </select>
+                        </p>
+                        <p><i class="fa fa-angle-right text-primary me-2"></i>Education Level:
+                            <select name="comp_select_educationLevel" class="form-select border-0">
+                                <option disabled selected value> -- Education Level -- </option>
+                                <option value="Degree">Degree</option>
+                                <option value="Diploma">Diploma</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" name="apply" value="apply" type="submit">Post Now</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Job Detail End -->
+{% endblock %}

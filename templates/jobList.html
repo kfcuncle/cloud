@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title %}
+Job-List
+{% endblock %}
+{% block content %}
+<!-- Jobs Start -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
+        <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+            <div class="tab-content">
+                <!-- Search Start -->
+                <form method="POST" action="{{ url_for('jobList') }}">
+                    <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s"
+                        style="padding: 35px;">
+                        <div class="container">
+                            <div class="row g-2">
+                                <div class="col-md-10">
+                                    <div class="row g-2">
+                                        <div class="col-md-4">
+                                            <select name="comp_select_educationLevel" class="form-select border-0">
+                                                <option disabled selected value> -- Education Level -- </option>
+                                                {% for o in educationLevel %}
+                                                <option value="{{ o[0] }}">{{ o[0] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select name="comp_select_industry" class="form-select border-0">
+                                                <option disabled selected value> -- Industry -- </option>
+                                                {% for o in industry %}
+                                                <option value="{{ o[0] }}">{{ o[0] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <select name="comp_select_location" class="form-select border-0">
+                                                <option disabled selected value> -- Location -- </option>
+                                                {% for o in location %}
+                                                <option value="{{ o[0] }}">{{ o[0] }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-dark border-0 w-100">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- Search End -->
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    {% for item in data %}
+                    <div class="job-item p-4 mb-4">
+                        <div class="row g-4">
+                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                <img class="flex-shrink-0 img-fluid border rounded" src="{{item[1]}}" alt=""
+                                    style="width: 80px; height: 80px;">
+                                <div class="text-start ps-4">
+                                    <h5 class="mb-3">{{item[2]}}</h5>
+                                    <span class="text-truncate me-3"><i
+                                            class="fa fa-map-marker-alt text-primary me-2"></i>{{item[3]}}</span>
+                                    <span class="text-truncate me-3"><i
+                                            class="far fa-clock text-primary me-2"></i>{{item[4]}}</span>
+                                    <span class="text-truncate me-0"><i
+                                            class="far fa-money-bill-alt text-primary me-2"></i>RM{{item[5]}}</span>
+                                </div>
+                            </div>
+                            <div
+                                class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                <div class="d-flex mb-3">
+                                    <a class="btn btn-primary" href="{{ url_for('jobDetail', jobID=item[0]) }}">Apply
+                                        Now</a>
+                                </div>
+                                <small class="text-truncate"><i
+                                        class="far fa-calendar-alt text-primary me-2"></i>{{item[6]}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Jobs End -->
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+<form action="{{ url_for('editProfile') }}" method="post" enctype="multipart/form-data">
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-md-12">
+                    <div class="card user-card-full">
+                        <div class="row m-l-0 m-r-0">
+                            <div class="bg-c-lite-green user-profile">
+                                <div class="card-block text-center text-white">
+                                    <h5>Profile Picture</h5>
+                                    <div class="m-b-25">
+                                        <div class="image-upload">
+                                            <label for="img">
+                                                {% if data[4] %}
+                                                <img id="preview-image" name="preview-image" src="{{data[4]}}"
+                                                    alt="Select Profile" style="height: 100px; width: 100px;" />
+                                                {% else %}
+                                                <img id="preview-image" name="preview-image"
+                                                    src="{{ url_for('static', filename='img/profile.png') }}"
+                                                    alt="Select Profile" style="height: 100px; width: 100px;" />
+                                                {% endif %}
+
+                                            </label>
+                                            <input id="img" name="img" type="file" accept="image/*"
+                                                onchange="previewImage()" style="display: none;" />
+                                        </div>
+                                    </div>
+                                    <h5>Name</h5>
+                                    <h6 class="f-w-600"><input type="text" name="name" value="{{data[1]}}"></h6>
+                                </div>
+                            </div>
+                        </div>
+                        {% if type == 'student': %}
+                        <div>
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="email"
+                                                value="{{data[2]}}">
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Phone</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="phone"
+                                                value="{{data[5]}}">
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Location</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="location"
+                                                value="{{data[6]}}"></h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Education</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Programme</p>
+                                        <select name="comp_select_programme">
+                                            {% if data[9] == 'Software Engineering' %}
+                                            <option disabled selected value>{{data[9]}}</option>
+                                            <option value="Data Science">Data Science</option>
+                                            <option value="Game Development">Game Development</option>
+                                            {% elif data[9] == 'Data Science' %}
+                                            <option disabled selected value>{{data[9]}}</option>
+                                            <option value="Software Engineering">Software Engineering</option>
+                                            <option value="Game Development">Game Development</option>
+                                            {% elif data[9] == 'Game Development' %}
+                                            <option disabled selected value>{{data[9]}}</option>
+                                            <option value="Software Engineering">Software Engineering</option>
+                                            <option value="Data Science">Data Science</option>
+                                            {% else %}
+                                            <option disabled selected value> -- Programme -- </option>
+                                            <option value="Software Engineering">Software Engineering</option>
+                                            <option value="Data Science">Data Science</option>
+                                            <option value="Game Development">Game Development</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">CGPA</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="cgpa"
+                                                value="{{data[7]}}">
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Working Experience</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="jobExperience"
+                                                value="{{data[11]}}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Skills</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="skill"
+                                                value="{{data[12]}}">
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Resume</p>
+                                        <input type="file" name="resume">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-primary w-100" name="edit" value="edit"
+                                            type="submit">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div>
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="email"
+                                                value="{{data[2]}}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Location</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="location"
+                                                value="{{data[6]}}"></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Industry</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="industry"
+                                                value="{{data[5]}}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Size</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="size"
+                                                value="{{data[7]}}"></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="m-b-10 f-w-600">Description</p>
+                                        <h6 class="text-muted f-w-400"><input type="text" name="description"
+                                                value="{{data[8]}}"></h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <button class="btn btn-primary w-100" name="edit" value="edit"
+                                            type="submit">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function previewImage() {
+        const input = document.getElementById('img');
+        const preview = document.getElementById('preview-image');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "#";
+        }
+    }
+</script>
+{% endblock %}
