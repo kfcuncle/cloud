@@ -11,10 +11,10 @@ Supervise
             {% for item in data %}
 			<div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
 				<a class="cat-item rounded p-4" href="{{ url_for('internship', studentId=item[0]) }}">
-					<img class="flex-shrink-0 img-fluid border rounded" src="img/com-logo-1.jpg" alt=""
+					<img class="flex-shrink-0 img-fluid border rounded" src="{{item[1]}}" alt=""
                                     style="width: 80px; height: 80px;">
-					<h4 class="mb-3">{{item[1]}}</h4>
-					<h6 class="mb-0 text-primary">{{item[2]}}</h6>
+					<h4 class="mb-3">{{item[2]}}</h4>
+					<h6 class="mb-0 text-primary">{{item[3]}}</h6>
 				</a>
 			</div>
             {% endfor %}
