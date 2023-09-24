@@ -445,12 +445,10 @@ def verdictJob():
 def supervise():
     type = session['userType']
     Id = session['Id']
-    read_sql = "SELECT student.studentID, studentName, internshipStatus FROM supervisor INNER JOIN internship ON supervisor.supervisorID = internship.supervisorID INNER JOIN student ON internship.studentID = student.studentID WHERE supervisor.supervisorID = %s"    
+    read_sql = "SELECT student.studentID, studentProfilePic, studentName, internshipStatus FROM supervisor INNER JOIN internship ON supervisor.supervisorID = internship.supervisorID INNER JOIN student ON internship.studentID = student.studentID WHERE supervisor.supervisorID = %s"    
     cursor = db_conn.cursor()
     cursor.execute(read_sql,(Id))
     data = cursor.fetchall()
-
-    return render_template("supervise.html",type=type, data=data)
 
 @app.route("/studentList/<Id>", methods=['GET', 'POST'])
 def studentList(Id=None):
