@@ -449,6 +449,7 @@ def supervise():
     cursor = db_conn.cursor()
     cursor.execute(read_sql,(Id))
     data = cursor.fetchall()
+    return render_template("supervise.html",type=type, data=data)
 
 @app.route("/studentList/<Id>", methods=['GET', 'POST'])
 def studentList(Id=None):
