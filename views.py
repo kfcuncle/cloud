@@ -318,7 +318,7 @@ def internship(studentId=None):
                 db_conn.commit()
         if 'report3' in request.files:
             if request.files['report3']:
-                report4 = request.files['report3']
+                report3 = request.files['report3']
                 pdf_file_name_in_s3 = type+"Id-" + str(Id) + "_report3_pdf"
                 s3 = boto3.resource('s3')
                 s3.Bucket(bucket).put_object(Key=pdf_file_name_in_s3, Body=report3)
