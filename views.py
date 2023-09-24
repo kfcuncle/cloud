@@ -410,7 +410,7 @@ def postJob():
     if request.method == 'POST':
         Id = session['Id']
         jobPosition = request.form.get('jobPosition')
-        jobDesciption = request.form.get('jobDesciption')
+        jobDescription = request.form.get('jobDescription')
         jobResponsibility = request.form.get('jobResponsibility')
         jobRequirement = request.form.get('jobRequirement')
         jobSalary = request.form.get('jobSalary')
@@ -420,7 +420,7 @@ def postJob():
 
         cursor = db_conn.cursor()
         insert_sql = "INSERT INTO job VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-        cursor.execute(insert_sql,(None,jobPosition,jobSalary,jobWorkingHour,jobIndustry,jobEducationLevel,jobDesciption,jobResponsibility,jobRequirement,datetime.now(),"Pending",Id))
+        cursor.execute(insert_sql,(None,jobPosition,jobSalary,jobWorkingHour,jobIndustry,jobEducationLevel,jobDescription,jobResponsibility,jobRequirement,datetime.now(),"Pending",Id))
         db_conn.commit()
         return render_template("home.html",type='company')
     else:
