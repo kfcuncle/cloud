@@ -430,7 +430,7 @@ def postJob():
 def verdictJob():
     type = session['userType']
     jobStatus = request.form.get('comp_select_status')
-    read_sql = "SELECT jobID, jobPosition, jobSalary, jobWorkingHour, jobPostedDate, jobStatus, companyLocation FROM job INNER JOIN company ON job.companyID = company.companyID"
+    read_sql = "SELECT jobID, jobPosition, jobSalary, jobWorkingHour, jobPostedDate, jobStatus, companyLocation, companyProfilePic FROM job INNER JOIN company ON job.companyID = company.companyID"
 
     if jobStatus:
         read_sql += " WHERE jobStatus = '" + jobStatus + "'"
