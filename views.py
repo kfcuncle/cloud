@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = 'kepsi'
 
 db_conn = connections.Connection(
-    host="database-3.cgnhhjdy7gio.us-east-1.rds.amazonaws.com",
+    host="database-asg.cgnhhjdy7gio.us-east-1.rds.amazonaws.com",
     port=3306,
     user="aws_user",
     password="Bait3273",
